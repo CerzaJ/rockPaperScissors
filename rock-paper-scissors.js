@@ -1,5 +1,4 @@
-const possibleChoices = possibleChoices.split('Rock', 'Paper', 'Scissors')
-
+const possibleChoices = ['Rock', 'Paper', 'Scissors']
 function getComputerChoice(){
 const randomChoice = possibleChoices[Math.floor(Math.random()*possibleChoices.length)];
 }
