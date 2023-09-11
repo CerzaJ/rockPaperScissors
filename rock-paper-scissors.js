@@ -7,8 +7,6 @@ function getCompChoice(){
 let result = [];
 function playRound(playerChoice, computerChoice){   
     let roundResult = ''; 
-    console.log(computerChoice);
-    console.log(playerChoice);
     if(playerChoice == computerChoice){
         roundResult += 'It was a tie ';
     }else if(
@@ -17,15 +15,17 @@ function playRound(playerChoice, computerChoice){
         (playerChoice == 'scissors' && computerChoice == 'paper')
     ){
         roundResult += 'You won ';
+        playerScore++;
     }else{
         roundResult += 'You lost ';
+        compScore++;
     }
-    result.push(`Round ${roundNum + 1}: ${roundResult}`);
+    result.push(`Round ${roundNum + 1}: ${roundResult}, you chose ${playerChoice} and the computer chose ${computerChoice}`);
     roundNum++;
 }
 
-let computerChoice;
-let playerChoice;
+let computerChoice = '';
+let playerChoice = '';
 let roundNum = 0;
 let compScore = 0;
 let playerScore = 0;
@@ -41,6 +41,19 @@ function game(){
 function getRoundResults(){
     for(let i = 0; i < result.length; i++){
         console.log(result[i])
+    }
+    return(getWinner());
+}
+
+function getWinner(){
+    if(playerScore > compScore){
+       console.log(`You win the game
+    Your score: ${playerScore}
+    My score: ${compScore}`);
+    }else if(playerScore < compScore){
+        console.log(`You lost the game, try again!
+        Your score: ${playerScore}
+       My score: ${compScore}`);
     }
 }
 
