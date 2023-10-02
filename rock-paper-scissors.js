@@ -22,6 +22,7 @@ function playRound(playerChoice, computerChoice){
     }
     result.push(`Round ${roundNum + 1}: ${roundResult}, you chose ${playerChoice} and the computer chose ${computerChoice}`);
     roundNum++;
+    points.textContent = `You: ${playerScore} / Computer: ${compScore}`;
 }
 
 let computerChoice = '';
@@ -32,7 +33,6 @@ let playerScore = 0;
 
 function game(){
     for(let i = 0; i < 5; i++){
-    let playerChoice= prompt ('R, P, S').toLowerCase();
     let computerChoice = getCompChoice();
     console.log(playRound(playerChoice, computerChoice));
     }
@@ -57,4 +57,25 @@ function getWinner(){
     }
 }
 
+//Dom Manipulation
 
+const btnRock = document.querySelector('#rock');
+const btnPaper = document.querySelector('#paper');
+const btnScissors = document.querySelector('#scissors');
+
+btnRock.addEventListener('click', () =>{
+    playRound('rock', getCompChoice());
+    btnRock.style.cssText = 'border-color: blue'
+});
+btnPaper.addEventListener('click', () =>{
+    playRound('paper', getCompChoice())
+    btnPaper.style.cssText = 'border-color: blue'
+});
+btnScissors.addEventListener('click', () =>{
+    playRound('scissors', getCompChoice())
+    btnScissors.style.cssText = 'border-color: blue'
+});
+
+
+const points = document.querySelector('.points');
+const divWinner = document.querySelector('.winner');
